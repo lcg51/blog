@@ -25,7 +25,8 @@
     }
 
     public goToPost(id: string){
-      this.$router.push({ path: '/post', params: { id }}) // -> /user
+      let idPost = id.toString();
+      this.$router.push({ path: `/post/${idPost}` });
     }
   }
 </script>
