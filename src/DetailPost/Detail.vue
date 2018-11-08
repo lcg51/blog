@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Post from '@/components/Post.vue'; // @ is an alias to /src
+import Post from './components/Post.vue'; // @ is an alias to /src
 
 @Component({
   components: {

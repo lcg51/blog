@@ -4,6 +4,7 @@
       <h2>{{post.title}}</h2>
       <p>{{post.body}}</p>
       <p>{{post.date}}</p>
+      <button v-on:click="goToPost(post.id)">Ver Post</button>
     </div>
   </div>
 </template>
@@ -21,6 +22,10 @@
   
     created() {
       this.listPosts = this.$store.getters.getListPosts;
+    }
+
+    public goToPost(id: string){
+      this.$router.push({ path: '/post', params: { id }}) // -> /user
     }
   }
 </script>
