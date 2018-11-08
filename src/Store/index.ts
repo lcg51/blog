@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import POST from './modules/post';
 
 Vue.use(Vuex);
-
+//He hecho un intento de encapsularlo en un modulo pero no he conseguido que me funcione
 export default new Vuex.Store({
   state: {
     posts: [
@@ -19,8 +20,13 @@ export default new Vuex.Store({
 
     },
 
-    updatePost(){
-
+    updatePost: (state:any) => (post:any) =>{
+      state.posts.find((p: any) => {
+        if(p.id === post.id){
+          p.title = post.title;
+          p.body = post.body;
+        }
+      })
     }
   },
 
@@ -28,8 +34,8 @@ export default new Vuex.Store({
     getListPosts(state): Array<object>{
       return state.posts;
     },
-    getPost(){
-
+    getPost:(state) => (postId: number) =>{
+      return state.posts.find(post => post.id === postId) 
     }
   },
 
