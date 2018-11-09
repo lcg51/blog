@@ -27,7 +27,7 @@
         }
     
         public updateData(){
-            this.$store.dispatch('updatePost', this.post);
+            this.$store.dispatch('posts/updatePost', this.post);
             this.$emit('showEdit');
         }
     }

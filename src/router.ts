@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './Home/Home.vue';
 import Detail from './DetailPost/Detail.vue';
+import NewPost from './NewPost/NewPost.vue';
 
 Vue.use(Router);
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/post/:id',
       name: 'post',
       component: Detail,
+    },
+    {
+      path: '/newPost',
+      name: 'newPost',
+      component: NewPost,
     }
   ],
 });

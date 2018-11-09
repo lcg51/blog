@@ -1,10 +1,10 @@
 <template>
   <div>
-    <button v-on:click="goToPost(post.id)">Nuevo post</button>
+    <v-btn v-on:click="newPost()">Nuevo post</v-btn>
     <v-container grid-list-md text-xs-center>
       <v-layout row wrap>
         <v-flex xs4 v-for="post in listPosts" :key="post.title">
-          <v-card v-on:click="goToPost(post.id)">
+          <v-card>
             <v-img class="white--text" height="200px" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg">
               <v-container fill-height fluid>
                 <v-layout fill-height>
@@ -16,12 +16,12 @@
             </v-img>
             <v-card-title>
               <div>
-                <span class="grey--text">Number {{post.id}}</span><br>
+                <span class="grey--text">Number {{post.id2}}</span><br>
                 <span>{{post.body}}</span>
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="orange">Ver</v-btn>
+              <v-btn  v-on:click="goToPost(post.id)" flat color="orange">Ver</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -42,7 +42,7 @@
     public listPosts: any = [];
   
     created() {
-      this.listPosts = this.$store.getters.getListPosts;
+      this.listPosts = this.$store.getters["posts/getListPosts"];
     }
   
     public goToPost(id: string) {

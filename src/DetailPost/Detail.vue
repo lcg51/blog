@@ -23,7 +23,7 @@ export default class Detail extends Vue {
   public edit = false;
   created() {
     this.idPost = parseInt(this.$route.params.id)
-    this.post = this.$store.getters.getPost(this.idPost);
+    this.post = this.$store.getters["posts/getPost"](this.idPost);
   }
 
   public toggleEdit(){
