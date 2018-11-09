@@ -1,11 +1,32 @@
 <template>
   <div>
-    <div v-for="post in listPosts" :key="post.title" class="hello">
-      <h2>{{post.title}}</h2>
-      <p>{{post.body}}</p>
-      <p>{{post.date}}</p>
-      <button v-on:click="goToPost(post.id)">Ver Post</button>
-    </div>
+    <button v-on:click="goToPost(post.id)">Nuevo post</button>
+    <v-container grid-list-md text-xs-center>
+      <v-layout row wrap>
+        <v-flex xs4 v-for="post in listPosts" :key="post.title">
+          <v-card v-on:click="goToPost(post.id)">
+            <v-img class="white--text" height="200px" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg">
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline">{{post.title}}</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+            <v-card-title>
+              <div>
+                <span class="grey--text">Number {{post.id}}</span><br>
+                <span>{{post.body}}</span>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="orange">Ver</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -23,10 +44,18 @@
     created() {
       this.listPosts = this.$store.getters.getListPosts;
     }
-
-    public goToPost(id: string){
+  
+    public goToPost(id: string) {
       let idPost = id.toString();
-      this.$router.push({ path: `/post/${idPost}` });
+      this.$router.push({
+        path: `/post/${idPost}`
+      });
+    }
+  
+    public newPost() {
+      this.$router.push({
+        path: `/newPost`
+      })
     }
   }
 </script>
